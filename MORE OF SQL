@@ -1,0 +1,9 @@
+SELECT director, SUM(domestic_sales) AS total_domestic_sales, SUM(international_sales) AS total_international_sales FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id GROUP BY director;
+SELECT NAME,MAX(Years_employed) FROM employees;
+SELECT ROLE, NAME, AVG(Years_employed) FROM employees GROUP BY ROLE;
+SELECT Building, SUM(Years_employed) FROM EMPLOYEES GROUP BY BUILDING; 
+SELECT COUNT(ROLE) AS NUMBER_OF_ARTIST   FROM employees WHERE ROLE = 'Artist';
+SELECT ROLE,COUNT(ROLE) AS NUMBER_OF_EMPLOYEES   FROM employees GROUP BY ROLE  ;
+SELECT ROLE,SUM(Years_employed) FROM employees GROUP BY ROLE HAVING ROLE='Engineer';
+SELECT DIRECTOR,COUNT(TITLE) FROM movies GROUP BY DIRECTOR ;
+INSERT INTO MOVIES (Id, Title, Director, Year, Length_minutes) VALUES (15, 'TOY STORY 4', 'PETER', 2010, 104);
