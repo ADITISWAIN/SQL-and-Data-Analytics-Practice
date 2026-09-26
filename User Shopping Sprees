@@ -1,0 +1,10 @@
+----List the user IDs who have gone on at least 1 shopping spree----
+
+WITH distinct_transactions AS (SELECT DISTINCT user_id, CAST(transaction_date AS DATE) AS trans_date FROM transactions),
+numbered_sprees AS (SELECT user_id, trans_date, trans_date - INTERVAL '1 day' * ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY trans_date) AS streak_group
+FROM distinct_transactions)
+SELECT DISTINCT user_id
+FROM numbered_sprees
+GROUP BY user_id, streak_group
+HAVING COUNT(DISTINCT trans_date) >= 3
+ORDER BY user_id;
