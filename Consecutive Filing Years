@@ -1,0 +1,10 @@
+WITH filtered_filings AS SELECT DISTINCT user_id, EXTRACT(YEAR FROM filing_date) AS filing_year
+  FROM filed_taxes
+  WHERE LOWER(product) LIKE '%turbotax%'),
+numbered_filings AS (SELECT user_id,    filing_year, filing_year - ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY filing_year) AS streak_group
+FROM filtered_filings)
+SELECT DISTINCT user_id
+FROM numbered_filings
+GROUP BY user_id, streak_group
+HAVING COUNT(*) >= 3
+ORDER BY user_id;
