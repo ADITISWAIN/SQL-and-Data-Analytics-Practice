@@ -1,3 +1,5 @@
+----Write a query that identifies the user IDs of individuals who have filed their taxes using any version of TurboTax for three or more consecutive years. Each user is allowed to file taxes once a year using a specific product. Display the output in the ascending order of user IDs.----
+
 WITH filtered_filings AS SELECT DISTINCT user_id, EXTRACT(YEAR FROM filing_date) AS filing_year
   FROM filed_taxes
   WHERE LOWER(product) LIKE '%turbotax%'),
