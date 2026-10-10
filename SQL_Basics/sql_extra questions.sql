@@ -1,5 +1,5 @@
-# SQL Practice
-
+# SQL Practice — Aggregations, Filtering and Grouping
+  
 SELECT director, SUM(domestic_sales) AS total_domestic_sales, SUM(international_sales) AS total_international_sales FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id GROUP BY director;
 SELECT NAME,MAX(Years_employed) FROM employees;
 SELECT ROLE, NAME, AVG(Years_employed) FROM employees GROUP BY ROLE;
