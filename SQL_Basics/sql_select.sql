@@ -1,4 +1,4 @@
-# PRACTICE OF BASIC SQL SELECT QUERY 
+# SQL SELECT — Retrieving Data 
 
 SELECT Title FROM movies;
 SELECT Director FROM movies;
