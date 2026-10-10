@@ -1,4 +1,4 @@
-# SQL SELECT — Retrieving Data 
+# SQL SELECT — Retrieving Data  
 
 SELECT Title FROM movies;
 SELECT Director FROM movies;
