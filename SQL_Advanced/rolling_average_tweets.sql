@@ -1,4 +1,5 @@
---Calculate a 3-day rolling moving average of user activity--
+#Calculate a 3-day rolling moving average of user activity
+    
 SELECT 
     user_id,
     tweet_date,
