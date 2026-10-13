@@ -1,0 +1,27 @@
+# Highest Salary In Each Of The Departments. 
+import pandas as pd
+
+
+def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    # Merge employee with department on departmentId = id
+    
+      df = employee.merge(department, left_on='departmentId', right_on='id', suffixes=('_emp', '_dept'))
+    
+    # Handle empty employee table edge case
+    
+      if df.empty:
+        return pd.DataFrame(columns=['Department', 'Employee', 'Salary'])
+    
+    # Find the maximum salary for each department
+   
+      max_salaries = df.groupby('name_dept')['salary'].transform('max')
+    
+    # Filter employees who have that maximum salary
+    
+      result = df[df['salary'] == max_salaries]
+    
+    # Select and rename columns to match the expected output format
+    
+      return result[['name_dept', 'name_emp', 'salary']].rename(
+        columns={'name_dept': 'Department', 'name_emp': 'Employee', 'salary': 'Salary'}
+    )
