@@ -1,0 +1,10 @@
+# HILL CLIMBING
+
+import math
+
+def climb_hill(n):
+    i = 0
+    # Loop through the possible number of 2-step moves (k)
+    for k in range(n // 2 + 1):
+        # Add the combinations of 1-steps and 2-steps to your counter i
+        i += math.comb(n - k, k)
