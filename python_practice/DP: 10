@@ -1,0 +1,23 @@
+# COIN CHANGE
+
+def coin_change(coins, target_amount):
+    # Create a list to store the min coins for every amount from 0 to target_amount.
+    # Fill it with a number larger than target_amount as a placeholder for "infinity".
+    dp = [target_amount + 1] * (target_amount + 1)
+    
+    # Base case: 0 coins are needed to make an amount of 0
+    dp[0] = 0
+    
+    # Build up the answers from 1 up to the target_amount
+    for i in range(1, target_amount + 1):
+        for coin in coins:
+            # If the coin is smaller than or equal to our current amount 'i'
+            if i - coin >= 0:
+                # Find the minimum coins needed
+                dp[i] = min(dp[i], 1 + dp[i - coin])
+                
+    # If the value is still our infinity placeholder, it's impossible to make the amount
+    if dp[target_amount] > target_amount:
+        return -1
+    
+    return dp[target_amount]
