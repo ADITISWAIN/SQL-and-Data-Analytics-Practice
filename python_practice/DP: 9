@@ -1,0 +1,29 @@
+# DATA CONFERENCE ATTENDEES 
+
+def data_conference_attendees(answers):
+    # Count how many times each answer appears
+    counts = {}
+    for ans in answers:
+        if ans in counts:
+            counts[ans] += 1
+        else:
+            counts[ans] = 1
+            
+    total_people = 0
+    
+    # Calculate the people needed for each group
+    for ans, freq in counts.items():
+        group_size = ans + 1  # The person plus the 'ans' others
+        
+        # Figure out how many groups we need for this frequency
+        groups = 0
+        remaining_people = freq
+        
+        while remaining_people > 0:
+            groups += 1
+            remaining_people -= group_size
+            
+        # Add the total people from these groups
+        total_people += groups * group_size
+        
+    return total_people
