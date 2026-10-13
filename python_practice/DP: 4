@@ -1,0 +1,18 @@
+#MIN AMPLITUDE
+
+def min_amplitude(arr):
+    # If there are 4 or fewer elements, we can change all of them to get an amplitude of 0
+    if len(arr) <= 4:
+        return 0
+        
+    # Sort the array so the smallest and largest numbers are aligned at the edges
+    arr.sort()
+    
+    # Check the 4 possible scenarios of changing up to 3 elements from either end:
+    opt1 = arr[-1 - 3] - arr[0]     # Change 3 largest elements
+    opt2 = arr[-1 - 2] - arr[1]     # Change 2 largest, 1 smallest
+    opt3 = arr[-1 - 1] - arr[2]     # Change 1 largest, 2 smallest
+    opt4 = arr[-1]     - arr[3]     # Change 3 smallest elements
+    
+    # Return the minimum amplitude among these options
+    return min(opt1, opt2, opt3, opt4)
