@@ -10,4 +10,4 @@ def longest_consecutive(nums):
             size += 1
             curr += 1
         ans = max(ans, size)
-    return ans 
+    return ans  
