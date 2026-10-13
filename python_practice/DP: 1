@@ -1,0 +1,13 @@
+#Longest Consecutive Sequence
+
+def longest_consecutive(nums):
+    ans = 0
+    set_nums = set(nums)
+
+    for num in nums:
+        size, curr = 0, num
+        while curr in set_nums:
+            size += 1
+            curr += 1
+        ans = max(ans, size)
+    return ans 
