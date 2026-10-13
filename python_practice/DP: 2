@@ -1,0 +1,21 @@
+# LOOPING NUMBERS
+
+def is_looping(n):
+    seen = set()
+    
+    while n != 1 and n not in seen:
+        seen.add(n)
+        
+        # Calculate the sum of the squares of the digits
+        total_sum = 0
+        temp = n
+        while temp > 0:
+            digit = temp % 10
+            total_sum += digit ** 2
+            temp //= 10
+            
+        n = total_sum
+        
+    # If the loop stopped because n == 1, return False. 
+    # If it stopped because we found a cycle (n in seen), return True.
+    return n != 1
