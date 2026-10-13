@@ -1,0 +1,19 @@
+# GIFT CARD SATISFACTION 
+
+def max_satisfaction(expectations, cards):
+    # Sort both lists in ascending order
+    expectations.sort()
+    cards.sort()
+    
+    i = 0  # Pointer for expectations
+    j = 0  # Pointer for cards
+    
+    # Traverse through both lists without deleting anything
+    while i < len(expectations) and j < len(cards):
+        # If the card meets or exceeds the expectation
+        if cards[j] >= expectations[i]:
+            i += 1  # Move to the next person
+        j += 1      # Always move to the next card
+        
+    # 'i' is the total number of satisfied teammates
+    return i
